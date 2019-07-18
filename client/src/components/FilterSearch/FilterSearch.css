@@ -20,9 +20,9 @@
   min-height: 100%;
   overflow: auto;
   width: 100%;
-  background: #000;
+  background: rgba(122, 28, 28, 0.349);
   overflow: auto;
-  z-index: 999999;
+  z-index: 9;
 }
 
 .hide {

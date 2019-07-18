@@ -1,12 +1,8 @@
 import React from "react";
-import Movies from "../Movies/Movies";
+// import Movies from "../Movies/Movies";
 
-const Films = () => {
-  return (
-    <React.Fragment>
-      <Movies />
-    </React.Fragment>
-  );
+const Films = props => {
+  return <h1 />;
 };
 
 export default Films;

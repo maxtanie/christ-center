@@ -1,15 +1,19 @@
 import React from "react";
 import "./Home.css";
 import MainMovie from "../MainMovie/MainMovie";
-import Movies from "../Movies/Movies";
+// import Movies from "../Movies/Movies";
 
-const Home = () => {
-  return (
-    <React.Fragment>
-      <MainMovie />
-      <Movies />
-    </React.Fragment>
-  );
-};
-
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div>
+        <MainMovie />
+      </div>
+    );
+  }
+}
 export default Home;

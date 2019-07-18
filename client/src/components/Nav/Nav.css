@@ -32,7 +32,7 @@ NAV
   right: 0; */
   background: #111;
   /* padding-bottom: 20px; */
-  z-index: 99999999;
+  z-index: 9999;
 }
 
 .nav .list-menu {

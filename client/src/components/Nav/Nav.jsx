@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
-import FilterSearch from "./FilterSearch/FilterSearch";
+import FilterSearch from "../FilterSearch/FilterSearch";
 
-const Nav = () => {
+const Nav = props => {
   return (
     <nav className="nav">
       <div className="subNav">
@@ -69,7 +69,7 @@ const Nav = () => {
             </NavLink>
           </li>
         </ul>
-        <FilterSearch />
+        <FilterSearch handleInput={props.handleInput} />
       </div>
     </nav>
   );

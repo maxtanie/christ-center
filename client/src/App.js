@@ -1,87 +1,38 @@
 import React, { Component } from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
-import axios from "axios";
+import { Route, Switch } from "react-router-dom";
+import "./App.css";
+
+// Components
+import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import Films from "./components/Films/Films";
+import Series from "./components/Series/Series";
+import SeeMore from "./components/SeeMore/SeeMore";
+import Enseignements from "./components/Enseignements/Enseignements";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      apiIndex: [],
-      apiMovies: []
-    };
-    this.api = axios.create({ baseURL: "http://localhost:8000" });
-  }
-  callAPI() {
-    this.api
-      .get()
-      .then(res => {
-        console.log(res);
-        this.setState({ apiIndex: res.data });
-      })
-      .catch(err => err);
-  }
-
-  callAPIMovies() {
-    this.api
-      .get("/movies")
-      .then(res => {
-        console.log(res);
-        this.setState({ apiMovies: res.data });
-      })
-      .catch(err => err);
-  }
-  componentDidMount() {
-    this.callAPI();
-    this.callAPIMovies();
-  }
-
   render() {
-    console.log("movies", this.state.apiIndex);
-    const move = this.state.apiIndex.map((movie, i) => {
-      return (
-        <div>
-          <p key={i}>
-            Title:{movie.title}
-            <br />
-          </p>
-          <img src={movie.image} />
-        </div>
-      );
-    });
     return (
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/movies">Movies</NavLink>
-            </li>
-          </ul>
-        </nav>
-        <p>{move}</p>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/movies" exact component={Movies} />
-        </Switch>
-      </div>
+      <React.Fragment>
+        <Nav />
+        <div className="App">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/movies" exact component={Films} />
+            <Route path="/movies/see-more" exact component={SeeMore} />
+            <Route path="/series" exact component={Series} />
+            <Route path="/added-recently" exact component={Series} />
+            <Route path="/teachings/adults" exact component={Enseignements} />
+            <Route path="/teachings/teenager" exact component={Enseignements} />
+            <Route path="/teachings/kids" exact component={Enseignements} />
+          </Switch>
+
+          <Footer />
+        </div>
+      </React.Fragment>
     );
   }
 }
-
-const Home = () => {
-  return (
-    <div>
-      <h1>Home page</h1>
-    </div>
-  );
-};
-
-const Movies = () => {
-  return (
-    <div>
-      <h1>Movies</h1>
-    </div>
-  );
-};
 
 export default App;

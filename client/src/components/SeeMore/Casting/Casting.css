@@ -1,0 +1,15 @@
+.grid-col-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+.bloc-casting-img img {
+  width: 100%;
+  height: auto;
+  filter: saturate(0%);
+}
+
+.bloc-casting-img img:hover {
+  transition: 0.3s ease;
+  filter: saturate(100%);
+}

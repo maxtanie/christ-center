@@ -52,26 +52,26 @@ app.use(
 // app.use(passport.session());
 
 const indexRoute = require("./api/movies");
+
 app.use("/", indexRoute.router);
-app.use("/movies", indexRoute.router);
 
 // Create our Movies Model
-console.log(movies);
-console.log("--------");
-pushSomeData = () => {
-  MoviesModel.insertMany(movies)
-    .then(dbRes => {
-      console.log(dbRes);
-      dbRes
-        .forEach((Movies, i) => console.log(Movies.title, i))
-        .catch(dbErr => {
-          console.log(dbErr);
-        });
-    })
-    .catch(dbErr => {
-      console.log(dbErr);
-    });
-};
+// console.log(movies);
+// console.log("--------");
+// pushSomeData = () => {
+//   MoviesModel.insertMany(movies)
+//     .then(dbRes => {
+//       console.log(dbRes);
+//       dbRes
+//         .forEach((Movies, i) => console.log(Movies.title, i))
+//         .catch(dbErr => {
+//           console.log(dbErr);
+//         });
+//     })
+//     .catch(dbErr => {
+//       console.log(dbErr);
+//     });
+// };
 // pushSomeData();
 
 app.listen(process.env.PORT, () => {

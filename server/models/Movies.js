@@ -2,9 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const moviesSchema = new Schema({
-  title: String,
+  titleFr: String,
+  titleOriginal: String,
+  duration: String,
+  synopsisFr: String,
+  synopsisEn: String,
   poster: String,
-  image: String,
   linkMovie: String,
   productor: String,
   trailer: String,
@@ -12,7 +15,9 @@ const moviesSchema = new Schema({
   average: String,
   age: String,
   actors: Array,
-  type: Array
+  type: Array,
+  casting: Array,
+  imageSlide: Array
 });
 
 const moviesModel = mongoose.model("Movies", moviesSchema);

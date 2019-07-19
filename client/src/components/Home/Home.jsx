@@ -9,11 +9,7 @@ class Home extends React.Component {
     this.state = {};
   }
   render() {
-    return (
-      <div>
-        <MainMovie />
-      </div>
-    );
+    return <div>{this.props.children}</div>;
   }
 }
 export default Home;

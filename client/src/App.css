@@ -24,6 +24,7 @@ body {
   font-family: "calibri light", sans-serif;
   overflow-x: hidden;
   background: #ebeaea;
+
   /* background: #fff; */
 }
 
@@ -176,7 +177,8 @@ CODE TO MOVE IN HIS TRUE COMPONENTS
 }
 
 .hide {
-  display: none;
+  display: none !important;
+
   overflow: hidden;
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import MainMovie from "../MainMovie/MainMovie";
 // import { NavLink } from "react-router-dom";
 import "./SeeMore.css";
-
+import axios from "axios";
 // COMPONENT
 import Resume from "./Resume/Resume";
 import Infos from "./Infos/Infos";
@@ -16,11 +16,13 @@ class SeeMore extends Component {
     this.infos = React.createRef();
     this.casting = React.createRef();
     this.state = {
+      movie: {},
       resume: true,
       infos: false,
       // titresSim: false,
       casting: false
     };
+    this.api = axios.create({ baseURL: "http://localhost:8000" });
     // this.ShowContentResume = this.ShowContentResume.bind(this);
     // this.ShowContentInfos = this.ShowContentInfos.bind(this);
     // // this.ShowContentTitreSim = this.ShowContentTitreSim.bind(this);
@@ -54,7 +56,18 @@ class SeeMore extends Component {
   //     casting: !this.state.casting
   //   });
   // };
-
+  callSeeMoreMovieId = id => {
+    this.api
+      .get("/movies/see-more/" + id)
+      .then(res => {
+        console.log("db res -------------", res);
+        this.setState({ movie: res.data });
+      })
+      .catch(err => err);
+  };
+  componentDidMount() {
+    this.callSeeMoreMovieId(this.props.match.params.id);
+  }
   ShowContent = () => {
     this.setState({
       resume: !this.state.resume
@@ -65,19 +78,18 @@ class SeeMore extends Component {
     return (
       <React.Fragment>
         <div className="poster-movie">
-          <img
-            src="https://images3.alphacoders.com/803/thumb-1920-803166.jpg"
-            alt=""
-          />
+          <img src={this.state.movie.image} alt="" />
         </div>
         <section className="see-more">
           <div className="container-movies">
             <div className="bloc-content-infos">
               <div className="bloc-info-title">
                 <span className="title-info red bold size-small">
-                  Tu ne tueras point
+                  {this.state.movie.titleFr}
                 </span>
-                <span className="year-info red size-small">(2016)</span>
+                <span className="year-info red size-small">
+                  ({this.state.movie.released})
+                </span>
                 <div className="original-title red size-small">
                   Hacksaw Ridge
                 </div>
@@ -87,7 +99,7 @@ class SeeMore extends Component {
                   title="iframe"
                   width="100%"
                   height="500"
-                  src="https://www.youtube.com/embed/1BvirR5w9aQ"
+                  src={this.state.movie.trailer}
                   frameborder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
@@ -120,7 +132,7 @@ class SeeMore extends Component {
                 </ul>
               </nav>
               <div className="show-info">
-                <Resume resume={this.state.resume} />
+                <Resume resume={this.state.movie.sysnopsisEn} />
                 <Infos infos={this.state.infos} />
                 {/* <TitreSimilaire titreSimilaire={this.state.titresSim} /> */}
                 <Casting casting={this.state.casting} />

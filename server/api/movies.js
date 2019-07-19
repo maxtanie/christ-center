@@ -6,6 +6,7 @@ const getAll = () => Movies.find();
 const getMovies = () => Movies.find();
 
 router.get("/", (req, res) => {
+  console.log("ici all movies");
   getAll()
     .then(movies => {
       res.status(200).send(movies);
@@ -34,6 +35,20 @@ router.get("/", (req, res) => {
 //       console.log(dbErr);
 //     });
 //TODO Validation ??
+
+router.get("/movies/see-more/:id", (req, res) => {
+  Movies.findById(req.params.id)
+    .then(movie => {
+      console.log("passé par la");
+      console.log("PARAMS", req.params.id);
+      // console.log("SNEACKS", movies.title);
+      // res.render("one_product", { sneacks });
+      res.send(movie);
+    })
+    .catch(err => {
+      console.log("error");
+    });
+});
 
 module.exports = {
   router,

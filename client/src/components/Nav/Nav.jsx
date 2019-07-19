@@ -69,7 +69,7 @@ const Nav = props => {
             </NavLink>
           </li>
         </ul>
-        <FilterSearch handleInput={props.handleInput} />
+        <FilterSearch moveNav={props.moveNav} handleInput={props.handleInput} />
       </div>
     </nav>
   );

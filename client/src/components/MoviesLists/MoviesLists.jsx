@@ -6,12 +6,14 @@ const MoviesLists = props => {
     return (
       <Movies
         key={i}
-        title={movie.title}
+        movieId={movie._id}
+        title={movie.titleFr}
         age={movie.age}
         type={movie.type}
         released={movie.released}
         actors={movie.actors}
         poster={movie.poster}
+        synopsis={movie.synopsisEn}
       />
     );
   });

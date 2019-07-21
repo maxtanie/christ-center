@@ -26,12 +26,18 @@ const Movies = props => {
       </div>
       <div className="flex content-to-watch">
         <div className="see-more-link">
-          <NavLink
+          {/* <NavLink
             className="see-more-link"
             to={"/movies/see-more/" + props.movieId}
           >
             Voir plus...
-          </NavLink>
+          </NavLink> */}
+          <a
+            className="see-more-link"
+            href={"/movies/see-more/" + props.movieId}
+          >
+            Voir plus...
+          </a>
         </div>
         <div className="btn-watch">
           <button className="watch-btn">Regarder</button>

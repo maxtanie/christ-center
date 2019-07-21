@@ -17,6 +17,7 @@ class SeeMore extends Component {
     this.casting = React.createRef();
     this.state = {
       movie: {},
+      imagesSlide: [],
       resume: true,
       infos: false,
       // titresSim: false,
@@ -77,9 +78,7 @@ class SeeMore extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="poster-movie">
-          <img src={this.state.movie.image} alt="" />
-        </div>
+        <div className="poster-movie">{this.state.movie.actors}</div>
         <section className="see-more">
           <div className="container-movies">
             <div className="bloc-content-infos">

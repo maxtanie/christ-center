@@ -1,5 +1,7 @@
 .poster-movie {
   width: 100%;
+  color: #000;
+  padding: 20px;
 }
 
 .poster-movie img {

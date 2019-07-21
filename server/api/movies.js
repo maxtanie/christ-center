@@ -1,10 +1,18 @@
 const express = require("express");
 const router = new express.Router();
 const Movies = require("../models/Movies");
+const TeachingsAdults = require("../models/TeachingsAdults");
 
 const getAll = () => Movies.find();
 const getMovies = () => Movies.find();
+const create = data => TeachingsAdults.create(data);
+const getTeaching = () => TeachingsAdults.find();
 
+/*
+------------------------------------------------------------------------
+ROUTE FOR MOVIES
+------------------------------------------------------------------------
+*/
 router.get("/", (req, res) => {
   console.log("ici all movies");
   getAll()
@@ -14,43 +22,121 @@ router.get("/", (req, res) => {
     .catch(error => res.status(500).send("Something went wrong", error));
 });
 
-// router.get("/movies", (req, res) => {
-//   getMovies()
-//     .then(movies => {
-//       res.status(200).send(movies);
-//     })
-//     .catch(error => res.status(500).send("Something went wrong", error));
-// });
-
-// MoviesModel.insertMany(movies)
+// router.post("/", (req, res) => {
+//   console.log("ici c'est LA HOME");
+//   const { title, text } = req.body;
+//   const newTeachingsAdults = {
+//     title,
+//     text
+//   };
+//   create(newTeachingsAdults)
 //     .then(dbRes => {
-//       console.log(dbRes);
-//       dbRes
-//         .forEach((Movies, i) => console.log(Movies.title, i))
-//         .catch(dbErr => {
-//           console.log(dbErr);
-//         });
+//       res.status(200).json(dbRes);
+
+//       console.log("TOUT VA BIEN");
 //     })
 //     .catch(dbErr => {
-//       console.log(dbErr);
+//       res.send(dbErr);
+//       console.log("TOUT VA MAL");
 //     });
-//TODO Validation ??
+// });
 
+// ROUTE FOR THE SEE MORE MOVIES
 router.get("/movies/see-more/:id", (req, res) => {
   Movies.findById(req.params.id)
     .then(movie => {
       console.log("passé par la");
       console.log("PARAMS", req.params.id);
-      // console.log("SNEACKS", movies.title);
-      // res.render("one_product", { sneacks });
       res.send(movie);
     })
     .catch(err => {
-      console.log("error");
+      console.log("error movies");
     });
+});
+
+/*
+------------------------------------------------------------------------
+ROUTE FOR TEACHINGS ADULTS
+------------------------------------------------------------------------
+*/
+router.get("/teachings/adults", (req, res) => {
+  console.log("ici all teachings adults");
+  getTeaching()
+    .then(teachingsAdults => {
+      res.status(200).send(teachingsAdults);
+    })
+    .catch(error => res.status(500).send("Something went wrong", error));
+});
+
+router.post("/teachings/adults", (req, res) => {
+  console.log("ici all teachings adults transformed");
+  const { title, text, image } = req.body;
+  const newTeachingsAdults = {
+    title,
+    text,
+    image
+  };
+  create(newTeachingsAdults)
+    .then(dbRes => {
+      res.status(200).json(dbRes);
+      // res.redirect("/teachings/adults")
+
+      console.log("POPOPOPOPO");
+    })
+    .catch(dbErr => {
+      res.send(dbErr);
+      console.log("TOUT VA MAL");
+    });
+});
+
+router.post("/teachings/adults", (req, res) => {
+  TeachingsAdults.findById(req.params.id)
+    .then(teaching => {
+      console.log("passé par la teaching adulte route");
+      console.log("PARAMS", req.params.id);
+    })
+    .catch(err => {
+      console.log("error teachings");
+    });
+});
+
+/*
+------------------------------------------------------------------------
+ROUTE FOR ADD TEACHING ADULTS FORM
+------------------------------------------------------------------------
+*/
+router.get("/add-teachings-adults", (req, res) => {
+  console.log("ici c'est add teaching adults");
+  getTeaching()
+    .then(addTeachingAdults => {
+      res.status(200).send(addTeachingAdults);
+    })
+    .catch(err => {
+      res.status(500).send("Bad ERROR", error);
+    });
+});
+
+router.post("//add-teachings-adults", (req, res) => {
+  // const { title, text, image } = req.body;
+  // const newTeachingsAdults = {
+  //   title,
+  //   text,
+  //   image
+  // };
+  // create(newTeachingsAdults)
+  //   .then(dbRes => {
+  //     res.status(200).json(dbRes);
+  //     console.log("TOUT VA BIEN");
+  //   })
+  //   .catch(dbErr => {
+  //     res.send(dbErr);
+  //     console.log("TOUT VA MAL");
+  //   });
 });
 
 module.exports = {
   router,
-  getAll
+  getAll,
+  getTeaching,
+  create
 };

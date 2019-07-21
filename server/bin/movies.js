@@ -200,7 +200,39 @@ const movies = [
       "https://media.senscritique.com/media/000016906266/960/Tu_ne_tueras_point.jpg",
       "https://obsessionb.files.wordpress.com/2016/11/tu-ne-tueras-point-pic.jpg"
     ]
+  },
+
+  {
+    poster:
+      "https://housen.info/wp-content/uploads/2018/11/verset-du-jour-en-image-a-partag-la-publication-de-bonjour-chez-vou-pour-nouveau-emci-tv-direct-3e54b43ecd583ec97fa943de937a65be.jpg",
+    titleFr: "War Room",
+    titleOriginal: "Hacksaw Ridge",
+    actors: ["Andrew Garfield", "Teresa Palmer"],
+    type: ["War", "Biopic", "Drame"],
+    casting: [
+      "http://fr.web.img3.acsta.net/c_162_216/pictures/16/09/05/17/16/068414.jpg",
+      "http://fr.web.img6.acsta.net/c_162_216/pictures/16/02/09/17/25/204779.jpg",
+      "http://fr.web.img6.acsta.net/c_162_216/pictures/15/07/06/12/16/032047.jpg",
+      "http://fr.web.img6.acsta.net/c_162_216/pictures/18/11/26/16/40/5098551.jpg"
+    ],
+    duration: "2h20",
+    productor: "Mel Gibson",
+    linkMovie: "",
+    trailer: "https://www.youtube.com/embed/1BvirR5w9aQ",
+    synopsisFr:
+      "Quand la Seconde Guerre mondiale a éclaté, Desmond, un jeune américain, s'est retrouvé confronté à un dilemme : comme n'importe lequel de ses compatriotes, il voulait servir son pays, mais la violence était incompatible avec ses croyances et ses principes moraux. Il s'opposait ne serait-ce qu'à tenir une arme et refusait d'autant plus de tuer.",
+    synopsisEn:
+      "In rural 1920s Virginia, the young Desmond Doss nearly kills his little brother Hal while roughhousing. This event and his Seventh-day Adventist upbringing reinforce Desmond's belief in the commandment Thou shalt not kill. Years later, Doss takes an injured man to the hospital and meets a nurse, Dorothy Schutte. The two strike a romance and Doss tells Dorothy of his interest in medical work.",
+    age: "16 +",
+    average: "8.3",
+    released: "2016",
+    imageSlide: [
+      "https://www.notrecinema.com/images/cache/tu-ne-tueras-point-wallpaper_531653_16052.jpg",
+      "https://media.senscritique.com/media/000016906266/960/Tu_ne_tueras_point.jpg",
+      "https://obsessionb.files.wordpress.com/2016/11/tu-ne-tueras-point-pic.jpg"
+    ]
   }
+
   // {
   //   poster: "",
   //   titleFr: "",

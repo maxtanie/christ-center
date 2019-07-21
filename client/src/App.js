@@ -14,6 +14,9 @@ import Enseignements from "./components/Enseignements/Enseignements";
 import MoviesLists from "./components/MoviesLists/MoviesLists";
 import FilterSearch from "./components/FilterSearch/FilterSearch";
 import MainMovie from "./components/MainMovie/MainMovie";
+import Teachings from "./components/Teachings/Teachings";
+import FormTeachingsAdults from "./components/FormTeachingsAdults/FormTeachingsAdults";
+import ManageTeachings from "./components/ManageTeachings/ManageTeachings";
 
 class App extends Component {
   constructor({ props }) {
@@ -113,9 +116,20 @@ class App extends Component {
             <Route path="/movies/see-more/:id" exact component={SeeMore} />
             <Route path="/series" exact component={Series} />
             <Route path="/added-recently" exact component={Series} />
-            <Route path="/teachings/adults" exact component={Enseignements} />
+            <Route path="/teachings/adults" exact component={Teachings} />
+            <Route path="/teachings/adults/:id" exact component={Teachings} />
+            <Route
+              path="/add-teachings-adults"
+              exact
+              component={FormTeachingsAdults}
+            />
             <Route path="/teachings/teenager" exact component={Enseignements} />
             <Route path="/teachings/kids" exact component={Enseignements} />
+            <Route
+              path="/manage-teachings-adults"
+              exact
+              component={ManageTeachings}
+            />
           </Switch>
           <Footer />
         </div>

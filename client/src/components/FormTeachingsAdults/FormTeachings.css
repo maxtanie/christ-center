@@ -1,0 +1,39 @@
+.container-teachings-form {
+  width: 600px;
+  margin: auto;
+  min-height: 500px;
+  padding: 50px;
+}
+
+.input-style {
+  width: 100%;
+  padding: 15px;
+  outline: none;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-input-placeholder {
+  color: #555;
+}
+
+.mtop {
+  margin-top: 50px;
+}
+
+.btn-add {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  color: #111;
+  width: 100px;
+  text-align: center;
+  padding: 12px;
+}
+
+.btn-add:hover {
+  background: #111;
+  color: #fff;
+  transition: 0.2s ease;
+}

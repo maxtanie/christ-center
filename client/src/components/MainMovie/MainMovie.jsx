@@ -18,7 +18,7 @@ class MainMovie extends Component {
       mvMute: "",
       play: "",
       pause: "",
-      isVideoMuted: true
+      isVideoMuted: false
     };
   }
 
@@ -36,13 +36,13 @@ class MainMovie extends Component {
     };
   };
 
-  playVideo = () => {
-    this.state.playBtn = onclick = () => {
-      this.setState({
-        play: document.querySelector("#background-video").play()
-      });
-    };
-  };
+  // playVideo = () => {
+  //   this.state.playBtn = onclick = () => {
+  //     this.setState({
+  //       play: document.querySelector("#background-video").play()
+  //     });
+  //   };
+  // };
 
   removeSound = () => {
     this.setState({ isVideoMuted: !this.state.isVideoMuted });
@@ -68,8 +68,8 @@ class MainMovie extends Component {
 
   render() {
     return (
-      <div id="wrapper-video">
-        <div className="bloc-content-video">
+      <div id="wrapper-video " className="flex-movies">
+        {/* <div className="bloc-content-video">
           <span onClick={this.playVideo} className="play btn-action-movie">
             Play
           </span>
@@ -82,7 +82,8 @@ class MainMovie extends Component {
           <span onClick={this.addSound} className="sound btn-action-movie">
             Sound
           </span>
-        </div>
+        </div> */}
+        <div className="info" />
         <video
           id="background-video"
           loop

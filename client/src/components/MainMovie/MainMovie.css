@@ -5,13 +5,7 @@
 }
 
 video {
-  min-width: 100%;
-}
-
-#wrapper-video #background-video {
-  position: relative !important;
-  z-index: 500;
-  overflow: hidden;
+  width: 65%;
 }
 
 #wrapper-video .bloc-content-video {
@@ -22,7 +16,6 @@ video {
   top: 10%;
   padding: 10px;
   transform: translate(-90%, 10%);
-  z-index: 700;
 }
 
 .btn-action-movie {
@@ -31,4 +24,15 @@ video {
   display: block;
   background: #fff;
   margin-bottom: 4%;
+}
+
+.flex-movies {
+  display: flex;
+  justify-content: baseline;
+}
+
+.info {
+  width: 50%;
+  min-height: 1px;
+  background: #000;
 }

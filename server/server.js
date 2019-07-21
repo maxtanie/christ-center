@@ -13,6 +13,8 @@ const app = express();
 const MoviesModel = require("./models/Movies");
 const movies = require("./bin/movies");
 
+const TeachingsAdultsModel = require("./models/TeachingsAdults");
+const teachingsAdults = require("./bin/teachingsAdults.js");
 // config -----------------------
 
 // cors options : allows your front to communicate through ajax with your backend
@@ -73,6 +75,22 @@ app.use("/", indexRoute.router);
 //     });
 // };
 // pushSomeData();
+
+// pushTeachingsData = () => {
+//   TeachingsAdultsModel.insertMany(teachingsAdults)
+//     .then(dbRes => {
+//       console.log(dbRes);
+//       dbRes
+//         .forEach((teachingsAdults, i) => console.log(teachingsAdults.text, i))
+//         .catch(dbErr => {
+//           console.log(dbErr);
+//         });
+//     })
+//     .catch(dbErr => {
+//       console.log(dbErr);
+//     });
+// };
+// pushTeachingsData();
 
 app.listen(process.env.PORT, () => {
   console.log("App hosted on: ", process.env.SITE_URL);

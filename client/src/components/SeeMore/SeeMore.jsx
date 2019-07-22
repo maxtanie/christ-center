@@ -16,12 +16,13 @@ class SeeMore extends Component {
     this.infos = React.createRef();
     this.casting = React.createRef();
     this.state = {
-      movie: {},
+      movie: [],
       imagesSlide: [],
-      resume: true,
-      infos: false,
-      // titresSim: false,
-      casting: false
+      detailsWidget: {
+        resume: true,
+        infos: false,
+        casting: false
+      }
     };
     this.api = axios.create({ baseURL: "http://localhost:8000" });
     // this.ShowContentResume = this.ShowContentResume.bind(this);
@@ -75,10 +76,23 @@ class SeeMore extends Component {
     });
   };
 
+  handleClick = name => {
+    const detailsWidget = { ...this.state.detailsWidget };
+    for (let key in detailsWidget) {
+      detailsWidget[key] = false;
+    }
+    detailsWidget[name] = true;
+    this.setState({ detailsWidget });
+  };
   render() {
+    const { detailsWidget } = this.state;
+    console.log(this.state.detailsWidget);
     return (
       <React.Fragment>
-        <div className="poster-movie">{this.state.movie.actors}</div>
+        <div className="poster-movie">
+          {/* {this.state.movie.imageSlide &&
+            this.state.movie.imageSlide.map(img => <img src={img} />)} */}
+        </div>
         <section className="see-more">
           <div className="container-movies">
             <div className="bloc-content-infos">
@@ -109,21 +123,21 @@ class SeeMore extends Component {
                 <ul className="center">
                   <li
                     ref={this.ShowContentSynopsis}
-                    onClick={this.ShowContentResume}
+                    onClick={e => this.handleClick("resume")}
                     className="list-infos black"
                   >
                     Synopsis
                   </li>
                   <li
                     ref={this.ShowContentInfos}
-                    onClick={this.ShowContentResume}
+                    onClick={e => this.handleClick("infos")}
                     className="list-infos black"
                   >
                     Infos
                   </li>
                   <li
                     ref={this.ShowContentCasting}
-                    onClick={this.ShowContentResume}
+                    onClick={e => this.handleClick("casting")}
                     className="list-infos black"
                   >
                     Casting
@@ -131,10 +145,14 @@ class SeeMore extends Component {
                 </ul>
               </nav>
               <div className="show-info">
-                <Resume resume={this.state.movie.sysnopsisEn} />
-                <Infos infos={this.state.infos} />
-                {/* <TitreSimilaire titreSimilaire={this.state.titresSim} /> */}
-                <Casting casting={this.state.casting} />
+                <Resume
+                  isDisplayed={detailsWidget.resume}
+                  resume={this.state.movie.synopsisEn}
+                />
+                {detailsWidget.infos && <Infos infos={this.state.movie} />}
+                {detailsWidget.casting && (
+                  <Casting casting={this.state.movie.casting} />
+                )}
               </div>
             </div>
           </div>

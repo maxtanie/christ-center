@@ -15,33 +15,33 @@ class FormTeachingsAdults extends Component {
     this.api = axios.create({ baseURL: "http://localhost:8000" });
   }
 
-  getAPI = () => {
-    this.api
-      .get("/add-teachings-adults")
-      .then(res => {
-        console.log("BIG DATA", res);
-        this.setState({
-          apiAddTeachings: res.data,
-          apiAddTeachings: this.state.title,
-          apiAddTeachings: this.state.text
-        });
-      })
-      .catch(err => err);
-  };
+  // getAPI = () => {
+  //   this.api
+  //     .get("/add-teachings-adults")
+  //     .then(res => {
+  //       console.log("BIG DATA", res);
+  //       this.setState({
+  //         apiAddTeachings: res.data,
+  //         apiAddTeachings: this.state.title,
+  //         apiAddTeachings: this.state.text
+  //       });
+  //     })
+  //     .catch(err => err);
+  // };
 
-  postAPI = () => {
-    this.api
-      .post("/add-teachings-adults")
-      .then(res => {
-        console.log(res);
-        this.setState({
-          apiAddTeachings: res.data
-          // apiAddTeachings: this.state.title,
-          // apiAddTeachings: this.state.text
-        });
-      })
-      .catch(err => err);
-  };
+  // postAPI = () => {
+  //   this.api
+  //     .post("/add-teachings-adults/")
+  //     .then(res => {
+  //       console.log(res);
+  //       this.setState({
+  //         apiAddTeachings: res.data
+  //         // apiAddTeachings: this.state.title,
+  //         // apiAddTeachings: this.state.text
+  //       });
+  //     })
+  //     .catch(err => err);
+  // };
 
   // postAPITeachings = () => {
   //   this.api
@@ -53,11 +53,11 @@ class FormTeachingsAdults extends Component {
   //     .catch(err => err);
   // };
 
-  componentDidMount = () => {
-    this.getAPI();
-    this.postAPI();
-    // this.postAPITeachings();
-  };
+  // componentDidMount = () => {
+  //   this.getAPI();
+  //   this.postAPI();
+  //   // this.postAPITeachings();
+  // };
 
   handleChange = e => {
     this.setState({
@@ -71,6 +71,18 @@ class FormTeachingsAdults extends Component {
     console.log(this.state.apiAddTeachings);
     axios
       .post("http://localhost:8000/teachings/adults", this.state)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          apiAddTeachings: res.data,
+          apiAddTeachings: this.state.title,
+          apiAddTeachings: this.state.text
+        });
+      })
+      .catch(err => err);
+
+    axios
+      .post("http://localhost:8000/add-teachings-adults/", this.props.match)
       .then(res => {
         console.log(res);
         this.setState({

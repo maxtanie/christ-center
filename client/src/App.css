@@ -134,7 +134,8 @@ COLOR TEXT
 }
 
 .red {
-  color: #bc0d0d !important;
+  /* color: #bc0d0d !important; */
+  color: #cc0000 !important;
 }
 
 .black {

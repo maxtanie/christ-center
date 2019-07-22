@@ -17,6 +17,7 @@ import MainMovie from "./components/MainMovie/MainMovie";
 import Teachings from "./components/Teachings/Teachings";
 import FormTeachingsAdults from "./components/FormTeachingsAdults/FormTeachingsAdults";
 import ManageTeachings from "./components/ManageTeachings/ManageTeachings";
+import ScrollToTop from "./ScrollToTop";
 
 class App extends Component {
   constructor({ props }) {
@@ -118,6 +119,11 @@ class App extends Component {
             <Route path="/added-recently" exact component={Series} />
             <Route path="/teachings/adults" exact component={Teachings} />
             <Route path="/teachings/adults/:id" exact component={Teachings} />
+            {/* <Route
+              path="/add-teachings-adults"
+              exact
+              component={FormTeachingsAdults}
+            /> */}
             <Route
               path="/add-teachings-adults"
               exact
@@ -127,6 +133,11 @@ class App extends Component {
             <Route path="/teachings/kids" exact component={Enseignements} />
             <Route
               path="/manage-teachings-adults"
+              exact
+              component={ManageTeachings}
+            />
+            <Route
+              path="/delete-teachings-adults/:id"
               exact
               component={ManageTeachings}
             />

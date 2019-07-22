@@ -89,49 +89,97 @@ router.post("/teachings/adults", (req, res) => {
     });
 });
 
-router.post("/teachings/adults", (req, res) => {
-  TeachingsAdults.findById(req.params.id)
-    .then(teaching => {
-      console.log("passé par la teaching adulte route");
-      console.log("PARAMS", req.params.id);
-    })
-    .catch(err => {
-      console.log("error teachings");
-    });
-});
+// router.post("/teachings/adults", (req, res) => {
+//   TeachingsAdults.findById(req.params.id)
+//     .then(teaching => {
+//       console.log("passé par la teaching adulte route");
+//       console.log("PARAMS", req.params.id);
+//     })
+//     .catch(err => {
+//       console.log("error teachings");
+//     });
+// });
 
 /*
 ------------------------------------------------------------------------
 ROUTE FOR ADD TEACHING ADULTS FORM
 ------------------------------------------------------------------------
 */
-router.get("/add-teachings-adults", (req, res) => {
-  console.log("ici c'est add teaching adults");
-  getTeaching()
-    .then(addTeachingAdults => {
-      res.status(200).send(addTeachingAdults);
+// router.get("/add-teachings-adults", (req, res) => {
+//   console.log("ici c'est add teaching adults");
+//   getTeaching()
+//     .then(addTeachingAdults => {
+//       res.status(200).send(addTeachingAdults);
+//     })
+//     .catch(err => {
+//       res.status(500).send("Bad ERROR", error);
+//     });
+// });
+
+// router.post("/add-teachings-adults", (req, res) => {
+//   // const { title, text, image } = req.body;
+//   // const newTeachingsAdults = {
+//   //   title,
+//   //   text,
+//   //   image
+//   // };
+//   // create(newTeachingsAdults)
+//   //   .then(dbRes => {
+//   //     res.status(200).json(dbRes);
+//   //     console.log("TOUT VA BIEN");
+//   //   })
+//   //   .catch(dbErr => {
+//   //     res.send(dbErr);
+//   //     console.log("TOUT VA MAL");
+//   //   });
+// })
+
+// router.get("/add-teachings-adults/:id", (req, res) => {
+//   TeachingsAdults.findByd(req.params.id)
+//     .then(addTeachingsAd => {
+//       // res.send(addTeachingsAd);
+
+//       console.log(req, "TEACHINGS ADULTS EDIT");
+//     })
+//     .catch(err => {
+//       console.log("error");
+//       // res.redirect("/manage-teachings-adults");
+//     });
+// });
+
+router.get("/add-teachings-adults/:id", (req, res) => {
+  TeachingsAdults.findById(req.params.id)
+    .then(addTeachingsAd => {
+      res.send(addTeachingsAd);
+      res.redirect("/teachings");
+      console.log(req, "TEACHINGS ADULTS EDIT");
     })
     .catch(err => {
-      res.status(500).send("Bad ERROR", error);
+      console.log("error");
+      res.redirect("/");
+      // res.redirect("/manage-teachings-adults");
     });
 });
 
-router.post("//add-teachings-adults", (req, res) => {
-  // const { title, text, image } = req.body;
-  // const newTeachingsAdults = {
-  //   title,
-  //   text,
-  //   image
-  // };
-  // create(newTeachingsAdults)
-  //   .then(dbRes => {
-  //     res.status(200).json(dbRes);
-  //     console.log("TOUT VA BIEN");
-  //   })
-  //   .catch(dbErr => {
-  //     res.send(dbErr);
-  //     console.log("TOUT VA MAL");
-  //   });
+router.post("/add-teachings-adults/:id", (req, res) => {
+  TeachingsAdults.findByIdAndUpdate(req.params.id, req.body)
+    .then(addTeachingsAd => {
+      res.send(addTeachingsAd);
+      console.log(req, "TEACHINGS ADULTS EDIT UPDATE");
+      res.redirect("/");
+    })
+    .catch(err => {
+      console.log("error POST TEACHING ADD");
+      res.redirect("/");
+    });
+});
+
+router.delete("/teachings/:id", (req, res) => {
+  console.log(req.params.id);
+  TeachingsAdults.findByIdAndRemove(req.params.id, function(err, teachingAdd) {
+    if (err) res.json(err);
+    else res.json("Succes remoded");
+  });
 });
 
 module.exports = {

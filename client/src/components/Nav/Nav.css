@@ -6,7 +6,8 @@ SUBNAV
 
 .nav .subNav {
   padding: 20px;
-  background: #bc0d0d;
+  /* background: #bc0d0d; */
+  background: #cc0000;
 }
 
 .nav .subNav .list-items-connection {
